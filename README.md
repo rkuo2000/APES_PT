@@ -1,4 +1,4 @@
-*** fix: **miscellaneous_keras.py** modified to tensorflow.keras
+*** fix: **miscellaneous_keras.py** keras modified to tensorflow.keras, convolutional removed,
 # Perspective Taking in Deep Reinforcement Learning Agents
 ## Introduction
 In this repository, you can find the code used for [Perspective taking in deep reinforcement learning agents (coming soon)](https://arxiv.org/).
