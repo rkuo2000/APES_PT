@@ -1,7 +1,7 @@
 #from APES import *
 #import numpy as np
 from tensorflow.keras.models import load_model,Model
-from tensorflow.keras.layers import Input,Flatten,merge,Dense
+from tensorflow.keras.layers import Input,Flatten,Concatenate,Dense
 from tensorflow.keras.models import load_model,Model
 from miscellaneous import Get_dataset
 import numpy as np
@@ -61,7 +61,7 @@ def Generate_Activaton(Experment_Ego=True,Use_Model=1358,chunk=5000):
         ##Create arrays for first time only (to get the shape of layer output)
         if start_limit==0:
             activations={}
-            keys=['flatten','merge','FC_1','FC_2','LSTM','FC_5+1','output']
+            keys=['flatten','concatenate','FC_1','FC_2','LSTM','FC_5+1','output']
             for j in range(7):
                 activations[keys[j]] = np.zeros((instances,tmp[j].shape[2]))
         ## Use only first step information, and detch the remaining since we only moved one step only.
@@ -72,7 +72,7 @@ def Generate_Activaton(Experment_Ego=True,Use_Model=1358,chunk=5000):
         start_limit=i
     ## Save the output in npz to be used later.
     np.savez('activations_model_{}_ego_{}.npz'.format(Use_Model,Experment_Ego),
-             flatten=activations['flatten'],merge=activations['merge'],
+             flatten=activations['flatten'],concatenate=activations['concatenate'],
              FC_1=activations['FC_1'],FC_2=activations['FC_2'],
              LSTM = activations['LSTM'],FC_5=activations['FC_5+1'],
              output=activations['output'])
@@ -91,10 +91,10 @@ def create_RL_layers(insize,in_conv,naction):
     """
     c = Input(shape=in_conv)
     con_process = c
-    con_process = convolutional.Conv2D(filters=6,kernel_size=(3,3),activation="relu",padding="same",strides=1)(con_process)
+    con_process = Conv2D(filters=6,kernel_size=(3,3),activation="relu",padding="same",strides=1)(con_process)
     con_process = Flatten()(con_process)
     x = Input(shape=insize)#env.observation_space.shape)
-    h = merge([con_process,x],mode="concat")
+    h = Concatenate([con_process,x],mode="concat")
     h = Dense(32, activation='tanh')(h)
     h = Dense(32, activation='tanh')(h)
     z = Dense(1, activation='sigmoid')(h)
