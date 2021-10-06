@@ -100,7 +100,7 @@ def create_RL_layers(insize,in_conv,naction):
     z = Dense(1, activation='sigmoid')(h)
     return c,x, z
 
-def Supervized_test(num_exper=20,epochs=20,Ego=False,bs=512,vs=0.2):
+def Supervized_test(num_exper=20,epochs=10,Ego=False,bs=512,vs=0.2):
     """
     Train a Decoder over the activations (pre-generated) to predict if the dominant can or can not
     see the food
