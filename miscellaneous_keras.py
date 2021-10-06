@@ -132,7 +132,7 @@ def Supervized_test(num_exper=20,epochs=20,Ego=False,bs=512,vs=0.2):
                                            y,epochs=epochs,batch_size=bs,validation_split=vs)
 
         info[i,0,:] = allo_history.history['val_loss']
-        info[i,1,:] = allo_history.history['val_acc']
+        info[i,1,:] = allo_history.history['val_accuracy']
         info[i,2,:] = allo_history.history['loss']
-        info[i,3,:] = allo_history.history['acc']
+        info[i,3,:] = allo_history.history['accuracy']
     return info
