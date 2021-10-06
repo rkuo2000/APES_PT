@@ -5,13 +5,14 @@ from tensorflow.keras.layers import Input,Flatten,Concatenate,Dense
 from tensorflow.keras.models import load_model,Model
 from miscellaneous import Get_dataset
 import numpy as np
+model_path = '/kaggle/input/perspective-taking'
 
 def Prepare_model(mod=1336):
     """ import a model and create another one copied from it to extract activations.
     input: model number ex:1336.
     output: keras model that take input cnn,rest and outputs 7 arrays (flatten,merge,FC_1,FC_2,LSTM,FC_5+1,output)
     """
-    x = load_model('output/{}/MOD/model.h5'.format(mod))
+    x = load_model(model_path+'/{}/MOD/model.h5'.format(mod))
     nm = Model(inputs=[x.layers[i].input for i in [0,3]],
                outputs=[x.layers[i].output for i in [2,4,5,6,7,8,9]])
     return nm
