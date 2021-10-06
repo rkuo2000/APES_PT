@@ -5,7 +5,7 @@ from tensorflow.keras.layers import Input,Flatten,Concatenate,Dense
 from tensorflow.keras.models import load_model,Model
 from miscellaneous import Get_dataset
 import numpy as np
-model_path = '/kaggle/input/perspective-taking'
+model_path = '/kaggle/input/perspective-taking/models'
 
 def Prepare_model(mod=1336):
     """ import a model and create another one copied from it to extract activations.
