@@ -95,7 +95,7 @@ def create_RL_layers(insize,in_conv,naction):
     con_process = Flatten()(con_process)
     x = Input(shape=insize)#env.observation_space.shape)
     #h = Concatenate([con_process,x],mode="concat")
-    h = Concatenate([con_process,x])
+    h = Concatenate()(con_process, x)
     h = Dense(32, activation='tanh')(h)
     h = Dense(32, activation='tanh')(h)
     z = Dense(1, activation='sigmoid')(h)
