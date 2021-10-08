@@ -1,5 +1,5 @@
-*** **miscellaneous_keras.py** keras modified to tensorflow.keras, convolutional removed, <br />
-*** add path: /kaggle/input/perspective-taking/models, NPZ
+**miscellaneous_keras.py** keras modified to tensorflow.keras, convolutional removed, <br />
+add path: /kaggle/input/perspective-taking/models, NPZ
 # Perspective Taking in Deep Reinforcement Learning Agents
 ## Introduction
 In this repository, you can find the code used for [Perspective taking in deep reinforcement learning agents (coming soon)](https://arxiv.org/).
