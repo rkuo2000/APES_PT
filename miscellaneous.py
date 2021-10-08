@@ -5,7 +5,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 import pandas as pd
 import pandas.api.types as ptypes
-#NPZ_path = '/kaggle/input/perspective-taking/NPZ'
+NPZ_path = '/kaggle/input/perspective-taking/NPZ'
    
 def calculate_mean_window(c,vector):
     """
@@ -36,7 +36,7 @@ def training_reward_window(window,model,T='train'):
         * model: the model number.
         * T: ['train','Test'] define the type of episodes, the training ones or the testing ones.
     """
-    x = pd.read_csv('output/{}/exp_details.csv'.format(model),header=None)
+    x = pd.read_csv(NPZ_path+'/{}/exp_details.csv'.format(model),header=None)
     x = x[x[5]==T]
     y = x[8].copy()
     y[y==0]=1000
@@ -98,7 +98,7 @@ def Get_action_sequence(Ego=False):
         unique_count=26400
     else:
         unique_count=31200
-    all_simu = np.load('NPZ/in_out_{}_seq_EGO_{}.npz'.format(unique_count,Ego))
+    all_simu = np.load(NPZ_path+'/in_out_{}_seq_EGO_{}.npz'.format(unique_count,Ego))
     action_sequence = all_simu['action_sequence']
     return action_sequence
     
@@ -120,7 +120,7 @@ def Get_dataset(Ego=False):
         unique_count=26400
     else:
         unique_count=31200
-    all_simu = np.load('NPZ/in_out_{}_seq_EGO_{}.npz'.format(unique_count,Ego))
+    all_simu = np.load(NPZ_path+'/in_out_{}_seq_EGO_{}.npz'.format(unique_count,Ego))
 
     data = all_simu['input_target']
     
