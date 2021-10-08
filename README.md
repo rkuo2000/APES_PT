@@ -1,4 +1,4 @@
-*** fix: **miscellaneous_keras.py** keras modified to tensorflow.keras, convolutional removed,
+*** **miscellaneous_keras.py** keras modified to tensorflow.keras, convolutional removed, <br />
 *** add path: /kaggle/input/perspective-taking/models, NPZ
 # Perspective Taking in Deep Reinforcement Learning Agents
 ## Introduction
